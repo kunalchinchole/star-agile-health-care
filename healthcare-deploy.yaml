@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: healthcare-deploy
+  labels:
+    app: healthcare-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: healthcare-apps
+  template:
+    metadata:
+      labels:
+        app: healthcare-apps
+    spec:
+      containers:
+      - name: healthcare-container
+        image: kunalchinchole121/healthcare:latest
+        ports:
+        - containerPort: 8082
+  selector:
+    matchLabels:
+      app: healthcare-apps
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: healthcare-service
+  labels:
+    app: healthcare-apps
+spec:
+  selector:
+    app: healthcare-apps
+
+  type: NodePort
+  ports:
+  - nodePort: 31000
+    port: 8082
+    targetPort: 8082
