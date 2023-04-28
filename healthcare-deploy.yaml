@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: healthcare-container
-        image: kunalchinchole121/healthcare:latest
+        image: kunalchinchole121/healthcare:2.1
         ports:
         - containerPort: 8082
   selector:
