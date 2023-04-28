@@ -32,7 +32,6 @@ pipeline {
                 sh 'docker rmi kunalchinchole121/healthcare'
                 sh "docker build -t kunalchinchole121/healthcare:${BUILD_NUMBER} ."
                 sh "docker tag kunalchinchole121/healthcare:${BUILD_NUMBER} kunalchinchole121/healthcare:latest"
-		//latest
                 sh 'docker image list'
                 sh "docker rmi kunalchinchole121/healthcare:${BUILD_NUMBER}"
                 sh 'docker image list'
